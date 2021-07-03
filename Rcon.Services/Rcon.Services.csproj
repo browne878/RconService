@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BaseService.Core\BaseService.Core.csproj" />
+    <ProjectReference Include="..\BaseService.Core\Rcon.Core.csproj" />
   </ItemGroup>
 
 </Project>

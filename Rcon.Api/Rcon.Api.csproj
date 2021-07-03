@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BaseService.Data\BaseService.Data.csproj" />
-    <ProjectReference Include="..\BaseService.Services\BaseService.Services.csproj" />
+    <ProjectReference Include="..\BaseService.Data\Rcon.Data.csproj" />
+    <ProjectReference Include="..\BaseService.Services\Rcon.Services.csproj" />
   </ItemGroup>
 
 
