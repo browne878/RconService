@@ -1,10 +1,8 @@
-﻿using BaseService.Core.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BaseService.Core
+﻿namespace Rcon.Core
 {
+    using System;
+    using Rcon.Core.Repositories;
+
     public interface IUnitOfWork : IDisposable
     {
         IExampleRepository ExampleRepository { get; }

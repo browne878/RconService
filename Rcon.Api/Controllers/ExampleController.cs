@@ -1,29 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BaseService.Core;
-using BaseService.Core.Entities;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-
-namespace BaseService.Controllers
+﻿namespace Rcon.Api.Controllers
 {
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Mvc;
+    using Rcon.Core;
+    using Rcon.Core.Entities;
+
     [ApiController]
     [Route("[controller]")]
     public class ExampleController : ControllerBase
     {
         private readonly IUnitOfWork context;
 
-        public ExampleController(IUnitOfWork unitOfWork)
+        public ExampleController(IUnitOfWork _unitOfWork)
         {
-            this.context = unitOfWork;
+            this.context = _unitOfWork;
         }
 
-        [HttpGet("{id}")]
-        public async Task<Example> Get(int id)
+        [HttpGet("{_id}")]
+        public async Task<Example> Get(int _id)
         {
-            var example = await context.ExampleRepository.GetAsync(id.ToString());
+            var example = await context.ExampleRepository.GetAsync(_id.ToString());
 
             return example;
         }

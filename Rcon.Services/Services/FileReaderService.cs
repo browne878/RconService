@@ -1,18 +1,15 @@
-﻿using BaseService.Core.Entities;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-
-namespace BaseService.Services.Services
+﻿namespace Rcon.Services.Services
 {
+    using System.IO;
+    using Rcon.Core.Entities;
+    using Newtonsoft.Json;
+
     public static class FileReaderService
     {
         public static BaseConfig GetConfig()
         {
-            var file = "./Config/Config.json";
-            var data = File.ReadAllText(file);
+            const string file = "./Config/Config.json";
+            string data = File.ReadAllText(file);
             return JsonConvert.DeserializeObject<BaseConfig>(data);
         }
     }

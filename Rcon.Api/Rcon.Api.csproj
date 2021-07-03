@@ -14,6 +14,9 @@
   <ItemGroup>
     <ProjectReference Include="..\BaseService.Data\Rcon.Data.csproj" />
     <ProjectReference Include="..\BaseService.Services\Rcon.Services.csproj" />
+    <ProjectReference Include="..\Rcon.Core\Rcon.Core.csproj" />
+    <ProjectReference Include="..\Rcon.Data\Rcon.Data.csproj" />
+    <ProjectReference Include="..\Rcon.Services\Rcon.Services.csproj" />
   </ItemGroup>
 
 

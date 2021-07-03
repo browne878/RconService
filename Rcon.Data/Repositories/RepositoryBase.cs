@@ -1,35 +1,33 @@
-﻿using Dapper;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BaseService.Data.Repositories
+﻿namespace Rcon.Data.Repositories
 {
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Threading.Tasks;
+    using Dapper;
+
     internal abstract class RepositoryBase
     {
         private readonly IDbTransaction transaction;
         private IDbConnection Connection { get { return transaction.Connection; } }
 
-        public RepositoryBase(IDbTransaction transaction)
+        protected RepositoryBase(IDbTransaction _transaction)
         {
-            this.transaction = transaction;
+            this.transaction = _transaction;
         }
 
-        protected async Task<T> QueryFirstOrDefaultAsync<T>(string sql, object param)
+        protected async Task<T> QueryFirstOrDefaultAsync<T>(string _sql, object _param)
         {
-            return await Connection.QueryFirstOrDefaultAsync<T>(sql, param, transaction);
+            return await Connection.QueryFirstOrDefaultAsync<T>(_sql, _param, transaction);
         }
 
-        protected async Task<IEnumerable<T>> QueryAsync<T>(string sql, object param = null)
+        protected async Task<IEnumerable<T>> QueryAsync<T>(string _sql, object _param = null)
         {
-            return await Connection.QueryAsync<T>(sql, param, transaction);
+            return await Connection.QueryAsync<T>(_sql, _param, transaction);
         }
 
-        protected async Task ExecuteAsync(string sql, object param)
+        protected async Task ExecuteAsync(string _sql, object _param)
         {
-            await Connection.ExecuteAsync(sql, param, transaction);
+            await Connection.ExecuteAsync(_sql, _param, transaction);
         }
     }
 }

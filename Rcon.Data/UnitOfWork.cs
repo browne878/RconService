@@ -1,15 +1,13 @@
-﻿using BaseService.Core;
-using BaseService.Core.Entities;
-using BaseService.Core.Repositories;
-using BaseService.Data.Repositories;
-using Npgsql;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
-
-namespace BaseService.Data
+﻿namespace Rcon.Data
 {
+    using System;
+    using System.Data;
+    using Npgsql;
+    using Rcon.Core;
+    using Rcon.Core.Entities;
+    using Rcon.Core.Repositories;
+    using Rcon.Data.Repositories;
+
     public class UnitOfWork : IUnitOfWork
     {
         private IDbConnection connection;
@@ -17,20 +15,14 @@ namespace BaseService.Data
         private IExampleRepository exampleRepository;
         private bool disposed;
           
-        public UnitOfWork(BaseConfig config)
+        public UnitOfWork(BaseConfig _config)
         {
-            connection = new NpgsqlConnection(config.Connection.GetConnectionString());
+            connection = new NpgsqlConnection(_config.Connection.GetConnectionString());
             connection.Open();
             transaction = connection.BeginTransaction();
         }
 
-        public IExampleRepository ExampleRepository
-        {
-            get
-            {
-                return exampleRepository ?? (exampleRepository = new ExampleRepository(transaction));
-            }
-        }
+        public IExampleRepository ExampleRepository => exampleRepository ??= new ExampleRepository(transaction);
 
         public void Commit()
         {
@@ -52,7 +44,7 @@ namespace BaseService.Data
 
         public void Dispose()
         {
-            dispose(true);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
 
@@ -62,11 +54,11 @@ namespace BaseService.Data
             exampleRepository = null;
         }
 
-        private void dispose(bool disposing)
+        private void Dispose(bool _disposing)
         {
             if (!disposed)
             {
-                if (disposing)
+                if (_disposing)
                 {
                     if (transaction != null)
                     {
@@ -85,7 +77,7 @@ namespace BaseService.Data
 
         ~UnitOfWork()
         {
-            dispose(false);
+            Dispose(false);
         }
         #endregion
     }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BaseService.Core.Entities
+﻿namespace Rcon.Core.Entities
 {
     public class Example
     {

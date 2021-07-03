@@ -1,63 +1,61 @@
-﻿using BaseService.Core.Entities;
-using BaseService.Core.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BaseService.Data.Repositories
+﻿namespace Rcon.Data.Repositories
 {
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Threading.Tasks;
+    using Rcon.Core.Entities;
+    using Rcon.Core.Repositories;
+
     internal class ExampleRepository : RepositoryBase, IExampleRepository
     {
-        public ExampleRepository(IDbTransaction transaction) : base(transaction)
+        public ExampleRepository(IDbTransaction _transaction) : base(_transaction)
         {
 
         }
 
-        public async Task AddAsync(Example entity)
+        public async Task AddAsync(Example _entity)
         {
-            var sql = @"INSERT INTO example_table (Name, Description) Values (@Name, @Description)";
+            const string sql = @"INSERT INTO example_table (Name, Description) Values (@Name, @Description)";
 
-            await ExecuteAsync(sql, entity);
+            await ExecuteAsync(sql, _entity);
         }
 
         public async Task<IEnumerable<Example>> GetAllAsync()
         {
-            var sql = "SELECT * FROM example_table";
+            const string sql = "SELECT * FROM example_table";
 
             return await QueryAsync<Example>(sql);
         }
 
-        public async Task<Example> GetAsync(string key)
+        public async Task<Example> GetAsync(string _key)
         {
-            var sql = "SELECT * FROM example_table WHERE id = @Key";
-            var param = new { Key = key };
+            const string sql = "SELECT * FROM example_table WHERE id = @Key";
+            var param = new { Key = _key };
 
             return await QueryFirstOrDefaultAsync<Example>(sql, param);
         }
 
-        public async Task<Example> FindByNameAsync(string exampleName)
+        public async Task<Example> FindByNameAsync(string _exampleName)
         {
-            var sql = "SELECT * FROM example_table WHERE name = @Name";
-            var param = new { Name = exampleName };
+            const string sql = "SELECT * FROM example_table WHERE name = @Name";
+            var param = new { Name = _exampleName };
 
             return await QueryFirstOrDefaultAsync<Example>(sql, param);
         }
 
-        public async Task RemoveAsync(string key)
+        public async Task RemoveAsync(string _key)
         {
-            var sql = "DELETE FROM example_table WHERE id = @Key";
-            var param = new { Key = key };
+            const string sql = "DELETE FROM example_table WHERE id = @Key";
+            var param = new { Key = _key };
 
             await ExecuteAsync(sql, param);
         }
 
-        public async Task UpdateAsync(Example entity)
+        public async Task UpdateAsync(Example _entity)
         {
-            var sql = @"UPDATE example_table SET name = @name, description = @Description WHERE id = @Id";
+            const string sql = @"UPDATE example_table SET name = @name, description = @Description WHERE id = @Id";
 
-            await ExecuteAsync(sql, entity);
+            await ExecuteAsync(sql, _entity);
         }
     }
 }
