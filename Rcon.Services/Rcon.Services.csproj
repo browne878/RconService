@@ -5,11 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DSharpPlus" Version="4.1.0-nightly-00911" />
+    <PackageReference Include="DSharpPlus.Interactivity" Version="4.1.0-nightly-00911" />
+    <PackageReference Include="IDoEverything.DSharpPlus.SlashCommands" Version="1.5.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BaseService.Core\Rcon.Core.csproj" />
     <ProjectReference Include="..\Rcon.Core\Rcon.Core.csproj" />
   </ItemGroup>
 

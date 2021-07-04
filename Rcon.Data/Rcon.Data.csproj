@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BaseService.Core\Rcon.Core.csproj" />
     <ProjectReference Include="..\Rcon.Core\Rcon.Core.csproj" />
   </ItemGroup>
 

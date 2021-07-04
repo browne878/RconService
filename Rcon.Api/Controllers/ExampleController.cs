@@ -19,7 +19,7 @@
         [HttpGet("{_id}")]
         public async Task<Example> Get(int _id)
         {
-            var example = await context.ExampleRepository.GetAsync(_id.ToString());
+            Example example = await context.ExampleRepository.GetAsync(_id.ToString());
 
             return example;
         }
