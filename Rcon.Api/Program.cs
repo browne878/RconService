@@ -1,16 +1,32 @@
 namespace Rcon.Api
 {
+    using System.Threading.Tasks;
+    using DSharpPlus;
+    using DSharpPlus.SlashCommands;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using Rcon.Services.Commands;
 
-    public class Program
+    public static class Program
     {
-        public static void Main(string[] _args)
+        public static async Task Main(string[] _args)
         {
-            CreateHostBuilder(_args).Build().Run();
+            IHost host = CreateHostBuilder(_args).Build();
+
+            DiscordClient bot = host.Services.GetRequiredService<DiscordClient>();
+
+            SlashCommandsExtension slash = bot.UseSlashCommands(new SlashCommandsConfiguration
+            {
+                Services = host.Services
+            });
+
+            slash.RegisterCommands<RconCommands>(764600703624282153);
+
+            await host.RunAsync();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] _args) =>
+        private static IHostBuilder CreateHostBuilder(string[] _args) =>
             Host.CreateDefaultBuilder(_args)
                 .ConfigureWebHostDefaults(_webBuilder =>
                 {

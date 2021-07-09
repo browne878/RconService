@@ -2,15 +2,15 @@
 {
     public class DataConfig
     {
-        public string Host { get; set; }
-        public string User { get; set; }
-        public string Password { get; set; }
-        public string Database { get; set; }
-        public int Port { get; set; }
+        public string MySqlHost { get; set; }
+        public string MySqlUser { get; set; }
+        public string MySqlPass { get; set; }
+        public string MySqlDb { get; set; }
+        public int MySqlPort { get; set; }
 
         public string GetConnectionString()
         {
-            return $"Server={Host}; Database={Database}; User Id={User}; Password={Password}; Port={Port};";
+            return $"Server={MySqlHost}; Database={MySqlDb}; User Id={MySqlUser}; Password={MySqlPass}; Port={MySqlPort};";
         }
     }
 }
