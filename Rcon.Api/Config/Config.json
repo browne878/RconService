@@ -1,9 +1,0 @@
-{
-  "Connection": {
-    "MySqlHost": "85.190.148.82",
-    "MySqlUser": "browne",
-    "MySqlPass": "pjasdh(730)",
-    "MySqlDb": "arkdbpve",
-    "MySqlPort": 3306
-  }
-}

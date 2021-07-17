@@ -26,9 +26,10 @@ namespace Rcon.Api
 
             _services.AddHostedService<BotService>();
 
-            _services.AddSingleton(FileReaderService.GetConfig());
+            _services.AddSingleton(FileReaderService.GetRconConfig());
             _services.AddSingleton(FileReaderService.GetBotConfig());
             _services.AddSingleton<DiscordClient>();
+            _services.AddSingleton<RconService>();
 
             _services.AddScoped<IUnitOfWork, UnitOfWork>();
         }

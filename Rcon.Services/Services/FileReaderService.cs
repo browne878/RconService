@@ -7,11 +7,11 @@
 
     public static class FileReaderService
     {
-        public static BaseConfig GetConfig()
+        public static RconConfig GetRconConfig()
         {
-            const string file = "./Config/Config.json";
+            const string file = "./Config/RconConfig.json";
             string data = File.ReadAllText(file);
-            return JsonConvert.DeserializeObject<BaseConfig>(data);
+            return JsonConvert.DeserializeObject<RconConfig>(data);
         }
 
         public static DiscordConfiguration GetBotConfig()
