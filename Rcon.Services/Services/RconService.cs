@@ -38,7 +38,7 @@
             return "Server is offline.";
         }
         
-        public async Task<List<string>> RconSendCommand(string _command, IEnumerable<string> _servername)
+        private async Task<List<string>> RconSendCommand(string _command, IEnumerable<string> _servername)
         {
             List<string> result = new List<string>();
 

@@ -1,12 +1,13 @@
+using DSharpPlus;
+using DSharpPlus.SlashCommands;
+
 namespace Rcon.Api
 {
     using System.Threading.Tasks;
-    using DSharpPlus;
-    using DSharpPlus.SlashCommands;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using Rcon.Services.Commands;
+    using Services.Commands;
 
     public static class Program
     {
